@@ -39,5 +39,4 @@ jobs:
           commit_author: ${{ steps.gpg.outputs.name}}
           commit_user_email: ${{ steps.gpg.outputs.email}}
           commit_user_name: ${{ steps.gpg.outputs.name}}
-          commit_options: "--signoff --no-verify --gpg-sign={{ steps.gpg.outputs.keyid }}"
           commit_message: "style: Fix PHP code style issues"
