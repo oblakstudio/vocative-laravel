@@ -1,19 +1,16 @@
-# This is my package vocative-laravel
+<div align="center">
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/oblak/vocative-laravel.svg?style=flat-square)](https://packagist.org/packages/oblak/vocative-laravel)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/oblak/vocative-laravel/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/oblak/vocative-laravel/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/oblak/vocative-laravel/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/oblak/vocative-laravel/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
-[![Total Downloads](https://img.shields.io/packagist/dt/oblak/vocative-laravel.svg?style=flat-square)](https://packagist.org/packages/oblak/vocative-laravel)
+<h1 align="center" style="border-bottom: none; margin-bottom: 0px">Larative 🗣️</h1>
+<h3 align="center" style="margin-top: 0px">Vocative Service Provider for Larative</h3>
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+[![Packagist Version](https://img.shields.io/packagist/v/oblak/vocative-laravel?label=Release&style=flat-square&logo=packagist&logoColor=white)](https://packagist.org/packages/oblak/vocative-laravel)
+![Packagist PHP Version](https://img.shields.io/packagist/dependency-v/oblak/vocative-laravel/php?label=PHP&logo=php&logoColor=white&logoSize=auto&style=flat-square)
+[![Total Downloads](https://img.shields.io/packagist/dt/oblak/vocative-laravel.svg?style=flat-square&logo=transmission)](https://packagist.org/packages/oblak/vocative-laravel)
 
-## Support us
+</div>
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/vocative-laravel.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/vocative-laravel)
+This library allows you to effortlessly convert Serbian personal names to their correct vocative form in your Laravel application.
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -21,13 +18,6 @@ You can install the package via composer:
 
 ```bash
 composer require oblak/vocative-laravel
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="vocative-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -39,22 +29,58 @@ php artisan vendor:publish --tag="vocative-config"
 This is the contents of the published config file:
 
 ```php
+<?php
+
 return [
+    'dictionary' => [],
+    'ignore_dictionary' => false,
 ];
-```
-
-Optionally, you can publish the views using
-
-```bash
-php artisan vendor:publish --tag="vocative-views"
 ```
 
 ## Usage
 
+### Using the Facade
+
+You can use the `Vocative` facade to transform names to their vocative form:
+
 ```php
-$vocative = new Oblak\Vocative();
-echo $vocative->echoPhrase('Hello, Oblak!');
+use Oblak\Vocative\Facades\Vocative;
+
+// Transform a name to vocative case
+echo Vocative::make('Милица'); // "Милице"
+echo Vocative::make('Марко');  // "Марко"
+
+// Force transformation (bypass dictionary)
+echo Vocative::make('Лука', true); // Forces transformation even if in dictionary
 ```
+
+### Using Blade Directives
+
+The package provides two Blade directives for convenient use in your templates:
+
+```blade
+{{-- Using @vocative directive --}}
+Hello, @vocative('Милица')!
+
+{{-- Using the shorter @voc alias --}}
+Hello, @voc('Марко')!
+```
+
+### Custom Dictionary
+
+You can define custom vocative forms in the configuration file:
+
+```php
+// config/vocative.php
+return [
+    'dictionary' => [
+        'CUSTOM_NAME' => 'CUSTOM_VOCATIVE_FORM',
+        'Лука' => 'Луко',
+    ],
+    'ignore_dictionary' => false, // Set to true to always force transformation
+];
+```
+
 
 ## Testing
 
