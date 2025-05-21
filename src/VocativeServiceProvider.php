@@ -5,7 +5,6 @@ namespace Oblak\Vocative;
 use Illuminate\Support\Facades\Blade;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Oblak\Vocative\Commands\VocativeCommand;
 
 class VocativeServiceProvider extends PackageServiceProvider
 {
@@ -23,8 +22,6 @@ class VocativeServiceProvider extends PackageServiceProvider
 
     /**
      * Register services.
-     *
-     * @return void
      */
     public function packageRegistered(): void
     {
@@ -43,8 +40,6 @@ class VocativeServiceProvider extends PackageServiceProvider
 
     /**
      * Bootstrap services.
-     *
-     * @return void
      */
     public function packageBooted(): void
     {

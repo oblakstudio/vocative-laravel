@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Blade;
 use Oblak\Vocative\Facades\Vocative;
 
-
-
 it('can transform names using facade', function () {
     expect(Vocative::make('Милица'))->toBe('Милице');
     expect(Vocative::make('Марко'))->toBe('Марко');
@@ -43,7 +41,7 @@ function blade(string $string, array $data = [])
 
     ob_start();
     extract($data, EXTR_SKIP);
-    eval('?>' . $string);
+    eval('?>'.$string);
     $string = ob_get_contents();
     ob_end_clean();
 
