@@ -1,0 +1,35 @@
+{
+    "branches": [
+        "master",
+        {
+            "name": "alpha",
+            "prerelease": true
+        },
+        {
+            "name": "beta",
+            "prerelease": true
+        }
+    ],
+    "plugins": [
+        "@semantic-release/commit-analyzer",
+        "@semantic-release/release-notes-generator",
+        [
+            "@semantic-release/exec",
+            {
+                "prepareCmd": "zip -r '/tmp/release.zip' ./src README.md LICENSE./composer.json"
+            }
+        ],
+        [
+            "@semantic-release/github",
+            {
+                "assets": [
+                    {
+                        "path": "/tmp/release.zip",
+                        "name": "vocative-laravel-v${nextRelease.version}.zip",
+                        "label": "Vocative for Laravel v${nextRelease.version}"
+                    }
+                ]
+            }
+        ]
+    ]
+}
