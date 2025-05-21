@@ -5,6 +5,9 @@ namespace Oblak\Vocative;
 use Oblak\Vocative\BaseDictionary;
 use Stringable;
 
+/**
+ * Configurable dictionary
+ */
 class ConfigDictionary extends BaseDictionary
 {
     /**

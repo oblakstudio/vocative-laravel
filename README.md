@@ -26,14 +26,14 @@ composer require oblak/vocative-laravel
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="vocative-laravel-migrations"
+php artisan vendor:publish --tag="vocative-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="vocative-laravel-config"
+php artisan vendor:publish --tag="vocative-config"
 ```
 
 This is the contents of the published config file:
@@ -46,7 +46,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="vocative-laravel-views"
+php artisan vendor:publish --tag="vocative-views"
 ```
 
 ## Usage
@@ -62,22 +62,10 @@ echo $vocative->echoPhrase('Hello, Oblak!');
 composer test
 ```
 
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
 
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-## Security Vulnerabilities
-
-Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
-
-## Credits
-
-- [Sibin Grasic](https://github.com/seebeen)
-- [All Contributors](../../contributors)
 
 ## License
 
