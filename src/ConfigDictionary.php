@@ -1,4 +1,7 @@
 <?php
+/**
+ * ConfigDictionary class file.
+ */
 
 namespace Oblak\Vocative;
 
