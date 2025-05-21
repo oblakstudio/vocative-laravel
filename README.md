@@ -39,6 +39,8 @@ return [
 
 ## Usage
 
+You can use the package in your application by calling the `Vocative` class directly or using the provided Blade directives.
+
 ### Using the Facade
 
 You can use the `Vocative` facade to transform names to their vocative form:
